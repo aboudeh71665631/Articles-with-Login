@@ -32,6 +32,8 @@ class NewsDetailsFragment : Fragment() {
         val view = binding.root
         val position = args.newsItemPosition
 
+
+        //TODO Add Connection Test
         viewModel.response.observe(viewLifecycleOwner) {
             if (it != null) {
                 binding.titleTv.text = it.news[position].title

@@ -22,6 +22,8 @@ class AboutUsFragment : Fragment() {
         _binding = FragmentAboutUsBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        //TODO Add Connection Test
+
         binding.webView.webViewClient = WebViewClient()
         binding.webView.loadUrl("http://www.euriskomobility.com")
 
