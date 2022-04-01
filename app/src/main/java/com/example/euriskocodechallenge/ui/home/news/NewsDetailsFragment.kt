@@ -1,5 +1,7 @@
 package com.example.euriskocodechallenge.ui.home.news
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -31,13 +33,16 @@ class NewsDetailsFragment : Fragment() {
         val position = args.newsItemPosition
 
         viewModel.response.observe(viewLifecycleOwner) {
-            if (it != null){
+            if (it != null) {
                 binding.titleTv.text = it.news[position].title
                 binding.articleImage.load(it.news[position].media[0].mediaMetadata[2].url)
                 binding.abstractTv.text = it.news[position].abstract
                 binding.authorTv.text = it.news[position].byline
                 binding.updatedTv.text = it.news[position].updated
                 binding.urlTv.text = it.news[position].url
+                binding.urlTv.setOnClickListener {
+                    startActivity(Intent(Intent.ACTION_VIEW).setData(Uri.parse(binding.urlTv.text.toString())))
+                }
             }
         }
 
